@@ -56,36 +56,30 @@ public class MainActivity extends AppCompatActivity {
 
         tasksListView = (ListView) findViewById(R.id.listView);
         taskList = new ArrayList<String>();
+        // Loads tasks, which are saved in the todo.txt file.
         readItems();
         listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskList);
         tasksListView.setAdapter(listAdapter);
 
+        // Removes a task when task is long clicked.
         tasksListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View item, int pos, long id) {
                 taskList.remove(pos);
                 listAdapter.notifyDataSetChanged();
+                // Updates the todo.txt file.
                 writeItems();
                 return true;
             }
         });
         }
-
-    /*private void saveTasks(){
-        SharedPreferences.Editor editor = getPreferences(Context.MODE_PRIVATE).edit();
-    }
-
-    @Override
-    protected void onStop() {
-        saveTasks();
-        super.onStop();
-    }*/
-
+    // Adds a task to the list
     public void addTask(View view){
         EditText taskText = (EditText) findViewById(R.id.taskText);
         String itemText = taskText.getText().toString();
         listAdapter.add(itemText);
         taskText.setText("");
+        // Writes the task to the todo.txt file.
         writeItems();
     }
 }
