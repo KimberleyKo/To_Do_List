@@ -1,12 +1,6 @@
 <resources>
     <string name="app_name">To_Do_List</string>
+    <string name="AddButton">Add</string>
 
-    <string-array name="friend_names">
-        <item>Chandler</item>
-        <item>Joey</item>
-        <item>Monica</item>
-        <item>Phoebe</item>
-        <item>Rachel</item>
-        <item>Ross</item>
-    </string-array>
+
 </resources>
